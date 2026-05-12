@@ -94,6 +94,47 @@ A local Prometheus monitoring stack running as a Windows service via NSSM (Non-S
 
 For detailed instructions, see [`docs/INSTALL.md`](docs/INSTALL.md).
 
+---
+
+## Running on Your Local Machine
+
+You have two ways to run Prometheus locally: as a one-off test or as a persistent Windows service.
+
+### Option A: Run Manually (for testing)
+
+Open a **Command Prompt** or **PowerShell** and run:
+
+```cmd
+cd C:\projects\prometheus-local
+prometheus.exe --config.file=config\prometheus.yml --storage.tsdb.path=data --web.listen-address=:9090
+```
+
+You will see log output in the console. Leave the window open. To stop, press `Ctrl + C`.
+
+Then open your browser to http://localhost:9090.
+
+> **Tip:** Use this method when you are debugging or verifying your configuration before installing the service.
+
+### Option B: Run as a Windows Service (for production / always-on)
+
+Run `scripts\install-service.bat` as **Administrator**.
+
+This installs `prometheus-service` so Prometheus starts automatically with Windows and restarts if it crashes.
+
+To check the service status:
+```cmd
+sc query prometheus-service
+```
+
+To start or stop:
+```cmd
+nssm start prometheus-service
+nssm stop prometheus-service
+nssm restart prometheus-service
+```
+
+---
+
 ## Troubleshooting
 
 If you see:
@@ -101,7 +142,28 @@ If you see:
 [nssm] Service prometheus-service ran for less than 1500 milliseconds.
 ```
 
-Run `scripts\diagnose-and-fix.bat` as Administrator. See [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) for a full root-cause analysis.
+### How to Run `diagnose-and-fix.bat`
+
+1. Open **File Explorer** and go to `C:\projects\prometheus-local\scripts\`.
+2. Right-click on `diagnose-and-fix.bat`.
+3. Select **Run as administrator**.
+4. The script will automatically check:
+   - If `prometheus.exe` exists
+   - If `prometheus.yml` is present
+   - If the `data\` directory exists (creates it if missing)
+   - If port 9090 is already in use
+   - Whether Prometheus can start manually
+   - Recent Windows Event Log entries for NSSM
+
+5. Follow any `[FIX]` instructions the script prints.
+
+### Still Crashing?
+
+Check the log files created by NSSM:
+- `C:\projects\prometheus-local\prometheus-service.out.log`
+- `C:\projects\prometheus-local\prometheus-service.err.log`
+
+Or read [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) for a full root-cause analysis.
 
 ## Project Structure
 
