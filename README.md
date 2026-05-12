@@ -169,20 +169,22 @@ Or read [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) for a full root-cau
 
 ```
 prometheus-local/
-├── README.md                       # This file
+├── README.md                           # This file
 ├── config/
-│   └── prometheus.yml              # Prometheus configuration
-├── data/                           # TSDB storage (created at runtime)
+│   └── prometheus.yml                  # Prometheus configuration
+├── data/                               # TSDB storage (created at runtime)
 ├── docs/
-│   ├── INSTALL.md                  # Step-by-step installation guide
-│   ├── TROUBLESHOOTING.md          # NSSM crash investigation
-│   └── ACCESS.md                   # URLs, APIs, and PromQL examples
+│   ├── INSTALL.md                      # Step-by-step installation guide
+│   ├── TROUBLESHOOTING.md              # NSSM crash investigation
+│   ├── ACCESS.md                       # URLs, APIs, and PromQL examples
+│   ├── METRICS-VERIFICATION.md         # How metrics collection works + how to query
+│   └── TEST-RESULTS.md                 # Verified test results on this machine
 ├── scripts/
-│   ├── install-service.bat         # Install & start NSSM service
-│   ├── uninstall-service.bat       # Remove service
-│   └── diagnose-and-fix.bat        # Automated crash diagnostics
+│   ├── install-service.bat             # Install & start NSSM service
+│   ├── uninstall-service.bat           # Remove service
+│   └── diagnose-and-fix.bat            # Automated crash diagnostics
 └── windows-service/
-    └── README.md                   # NSSM reference & commands
+    └── README.md                       # NSSM reference & commands
 ```
 
 ---
@@ -204,48 +206,64 @@ See [`docs/ACCESS.md`](docs/ACCESS.md) for the complete endpoint reference.
 Once Prometheus is running (manually or as a service), open your browser and go to:
 
 ```
-http://localhost:9090
+http://localhost:9090/graph
 ```
 
 You will see the Prometheus expression browser:
 
 ![Prometheus UI](docs/images/prometheus-ui.png)
 
-### How to query metrics
+> **Important**: Seeing **"No data queried yet"** is normal! It means Prometheus is running and ready — you just haven't typed a query yet. Metrics are being collected in the background every 15 seconds.
 
-1. In the **Expression** box, type a PromQL query. For example:
-   ```
-   up
-   ```
-   This shows the health of all scrape targets (`1` = up, `0` = down).
+### How to query metrics (step by step)
 
-2. Press **Execute** (or `Shift + Enter`).
+**Step 1 — Type a query**
 
-3. Switch between the **Table** tab (instant values) and **Graph** tab (time series plot).
+Click the **Expression** box at the top and type:
+
+```
+up
+```
+
+**Step 2 — Click Execute**
+
+Press the blue **Execute** button (or press `Shift + Enter`).
+
+**Step 3 — View results**
+
+You will see a table showing:
+
+| Metric | Value |
+|--------|-------|
+| `up{instance="localhost:9090",job="prometheus"}` | **1** |
+
+Value **1** = target is UP and healthy. ✅
+
+**Step 4 — Try the Graph tab**
+
+Type `go_goroutines` → click **Execute** → click the **Graph** tab. You will see a line chart.
 
 ### Common starter queries
 
 | Query | What it shows |
 |-------|---------------|
-| `up` | Health of all targets |
+| `up` | Health of all targets (`1` = up) |
 | `prometheus_build_info` | Version and build details |
+| `go_goroutines` | Active goroutines |
+| `prometheus_tsdb_head_series` | Time series in memory |
 | `rate(prometheus_tsdb_head_samples_appended_total[1m])` | Samples ingested per second |
-| `prometheus_tsdb_storage_blocks_bytes` | Disk usage by TSDB |
 | `scrape_duration_seconds` | Time taken per scrape |
 
-### API access
+### Quick API test (PowerShell)
 
-You can also fetch metrics programmatically:
+```powershell
+# Check if target is up
+Invoke-WebRequest -Uri "http://localhost:9090/api/v1/query?query=up" -UseBasicParsing
 
-```bash
-# Instant query
-curl 'http://localhost:9090/api/v1/query?query=up'
-
-# Range query (last 5 minutes)
-curl 'http://localhost:9090/api/v1/query_range?query=up&start=2024-01-01T00:00:00Z&end=2024-01-01T00:05:00Z&step=15s'
-
-# List all metric names
-curl 'http://localhost:9090/api/v1/label/__name__/values'
+# List all 400+ metric names
+Invoke-WebRequest -Uri "http://localhost:9090/api/v1/label/__name__/values" -UseBasicParsing
 ```
 
 For the full API reference, see [`docs/ACCESS.md`](docs/ACCESS.md).
+For verified test results on this machine, see [`docs/TEST-RESULTS.md`](docs/TEST-RESULTS.md).
+For a deep dive into how metrics collection works, see [`docs/METRICS-VERIFICATION.md`](docs/METRICS-VERIFICATION.md).
