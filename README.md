@@ -96,6 +96,28 @@ For detailed instructions, see [`docs/INSTALL.md`](docs/INSTALL.md).
 
 ---
 
+## View Your Dashboards (Grafana)
+
+Everything is now running as a Windows service and starts automatically on boot.
+
+| Service | URL | Purpose |
+|---------|-----|---------|
+| **Grafana** | http://localhost:3000 | Visual dashboards and graphs |
+| **Prometheus** | http://localhost:9090 | Raw metrics and query interface |
+| **windows_exporter** | http://localhost:9182 | Windows system metrics endpoint |
+
+### Open Grafana
+
+Go to http://localhost:3000 and log in:
+- **Username**: `admin`
+- **Password**: `admin`
+
+Then open the pre-loaded Windows dashboard to see live CPU, memory, disk, and network graphs.
+
+For the full Grafana setup guide, see [`docs/GRAFANA-SETUP.md`](docs/GRAFANA-SETUP.md).
+
+---
+
 ## Running on Your Local Machine
 
 You have two ways to run Prometheus locally: as a one-off test or as a persistent Windows service.
@@ -182,7 +204,8 @@ prometheus-local/
 │   ├── VERIFICATION-QUERIES.md         # All diagnostic queries used
 │   ├── TEST-LINKS.md                   # 400+ ready-to-use URLs and API links
 │   ├── WINDOWS-METRICS-REPORT.md       # CPU/RAM/Disk/Net monitoring setup
-│   └── HOW-I-DID-IT.md                 # Step-by-step explanation of the setup
+│   ├── HOW-I-DID-IT.md                 # Step-by-step explanation of the setup
+│   └── GRAFANA-SETUP.md                # Grafana dashboards + auto-start services
 ├── scripts/
 │   ├── install-service.bat             # Install & start NSSM service
 │   ├── uninstall-service.bat           # Remove service

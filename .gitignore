@@ -1,1 +1,5 @@
 data/
+prometheus.exe
+promtool.exe
+windows_exporter.exe
+grafana/
