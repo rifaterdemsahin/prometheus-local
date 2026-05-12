@@ -1,0 +1,63 @@
+Error parsing command line arguments: unexpected C:\projects\prometheus-local\config\prometheus.yml\
+prometheus.exe: error: unexpected C:\projects\prometheus-local\config\prometheus.yml\
+Error parsing command line arguments: unexpected C:\projects\prometheus-local\config\prometheus.yml\
+prometheus.exe: error: unexpected C:\projects\prometheus-local\config\prometheus.yml\
+Error parsing command line arguments: unexpected C:\projects\prometheus-local\config\prometheus.yml\
+prometheus.exe: error: unexpected C:\projects\prometheus-local\config\prometheus.yml\
+Error parsing command line arguments: unexpected C:\projects\prometheus-local\config\prometheus.yml\
+prometheus.exe: error: unexpected C:\projects\prometheus-local\config\prometheus.yml\
+ts=2026-05-12T06:30:13.071Z caller=main.go:589 level=info msg="No time or size retention was set so using the default time retention" duration=15d
+ts=2026-05-12T06:30:13.071Z caller=main.go:633 level=info msg="Starting Prometheus Server" mode=server version="(version=2.53.0, branch=HEAD, revision=4c35b9250afefede41c5f5acd76191f90f625898)"
+ts=2026-05-12T06:30:13.071Z caller=main.go:638 level=info build_context="(go=go1.22.4, platform=windows/amd64, user=root@8f76cdac98fc, date=20240619-07:41:33, tags=builtinassets,stringlabels)"
+ts=2026-05-12T06:30:13.071Z caller=main.go:639 level=info host_details=(windows)
+ts=2026-05-12T06:30:13.071Z caller=main.go:640 level=info fd_limits=N/A
+ts=2026-05-12T06:30:13.071Z caller=main.go:641 level=info vm_limits=N/A
+ts=2026-05-12T06:30:13.083Z caller=web.go:568 level=info component=web msg="Start listening for connections" address=:9090
+ts=2026-05-12T06:30:13.086Z caller=main.go:1148 level=info msg="Starting TSDB ..."
+ts=2026-05-12T06:30:13.087Z caller=dir_locker.go:77 level=warn component=tsdb msg="A lockfile from a previous execution already existed. It was replaced" file=C:\projects\prometheus-local\data\lock
+ts=2026-05-12T06:30:13.087Z caller=tls_config.go:313 level=info component=web msg="Listening on" address=[::]:9090
+ts=2026-05-12T06:30:13.087Z caller=tls_config.go:316 level=info component=web msg="TLS is disabled." http2=false address=[::]:9090
+ts=2026-05-12T06:30:13.091Z caller=head.go:626 level=info component=tsdb msg="Replaying on-disk memory mappable chunks if any"
+ts=2026-05-12T06:30:13.091Z caller=head.go:713 level=info component=tsdb msg="On-disk memory mappable chunks replay completed" duration=0s
+ts=2026-05-12T06:30:13.091Z caller=head.go:721 level=info component=tsdb msg="Replaying WAL, this may take a while"
+ts=2026-05-12T06:30:13.100Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=0 maxSegment=2
+ts=2026-05-12T06:30:13.274Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=1 maxSegment=2
+ts=2026-05-12T06:30:13.275Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=2 maxSegment=2
+ts=2026-05-12T06:30:13.275Z caller=head.go:830 level=info component=tsdb msg="WAL replay completed" checkpoint_replay_duration=0s wal_replay_duration=184.9271ms wbl_replay_duration=0s chunk_snapshot_load_duration=0s mmap_chunk_replay_duration=0s total_replay_duration=184.9271ms
+ts=2026-05-12T06:30:13.288Z caller=main.go:1169 level=info fs_type=unknown
+ts=2026-05-12T06:30:13.288Z caller=main.go:1172 level=info msg="TSDB started"
+ts=2026-05-12T06:30:13.288Z caller=main.go:1354 level=info msg="Loading configuration file" filename=config/prometheus.yml
+ts=2026-05-12T06:30:13.323Z caller=main.go:1391 level=info msg="updated GOGC" old=100 new=75
+ts=2026-05-12T06:30:13.323Z caller=main.go:1402 level=info msg="Completed loading of configuration file" filename=config/prometheus.yml totalDuration=35.5865ms db_storage=0s remote_storage=0s web_handler=0s query_engine=0s scrape=34.587ms scrape_sd=0s notify=0s notify_sd=0s rules=0s tracing=0s
+ts=2026-05-12T06:30:13.323Z caller=main.go:1133 level=info msg="Server is ready to receive web requests."
+ts=2026-05-12T06:30:13.323Z caller=manager.go:164 level=info component="rule manager" msg="Starting rule manager..."
+ts=2026-05-12T07:13:42.912Z caller=main.go:589 level=info msg="No time or size retention was set so using the default time retention" duration=15d
+ts=2026-05-12T07:13:42.913Z caller=main.go:633 level=info msg="Starting Prometheus Server" mode=server version="(version=2.53.0, branch=HEAD, revision=4c35b9250afefede41c5f5acd76191f90f625898)"
+ts=2026-05-12T07:13:42.913Z caller=main.go:638 level=info build_context="(go=go1.22.4, platform=windows/amd64, user=root@8f76cdac98fc, date=20240619-07:41:33, tags=builtinassets,stringlabels)"
+ts=2026-05-12T07:13:42.913Z caller=main.go:639 level=info host_details=(windows)
+ts=2026-05-12T07:13:42.913Z caller=main.go:640 level=info fd_limits=N/A
+ts=2026-05-12T07:13:42.913Z caller=main.go:641 level=info vm_limits=N/A
+ts=2026-05-12T07:13:42.922Z caller=web.go:568 level=info component=web msg="Start listening for connections" address=:9090
+ts=2026-05-12T07:13:42.925Z caller=main.go:1148 level=info msg="Starting TSDB ..."
+ts=2026-05-12T07:13:42.930Z caller=dir_locker.go:77 level=warn component=tsdb msg="A lockfile from a previous execution already existed. It was replaced" file=C:\projects\prometheus-local\data\lock
+ts=2026-05-12T07:13:42.930Z caller=tls_config.go:313 level=info component=web msg="Listening on" address=[::]:9090
+ts=2026-05-12T07:13:42.931Z caller=tls_config.go:316 level=info component=web msg="TLS is disabled." http2=false address=[::]:9090
+ts=2026-05-12T07:13:42.942Z caller=head.go:626 level=info component=tsdb msg="Replaying on-disk memory mappable chunks if any"
+ts=2026-05-12T07:13:42.958Z caller=head.go:713 level=info component=tsdb msg="On-disk memory mappable chunks replay completed" duration=15.7438ms
+ts=2026-05-12T07:13:42.958Z caller=head.go:721 level=info component=tsdb msg="Replaying WAL, this may take a while"
+ts=2026-05-12T07:13:42.979Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=0 maxSegment=3
+ts=2026-05-12T07:13:43.202Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=1 maxSegment=3
+ts=2026-05-12T07:13:43.366Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=2 maxSegment=3
+ts=2026-05-12T07:13:43.368Z caller=head.go:793 level=info component=tsdb msg="WAL segment loaded" segment=3 maxSegment=3
+ts=2026-05-12T07:13:43.368Z caller=head.go:830 level=info component=tsdb msg="WAL replay completed" checkpoint_replay_duration=522.9µs wal_replay_duration=409.6389ms wbl_replay_duration=0s chunk_snapshot_load_duration=0s mmap_chunk_replay_duration=15.7438ms total_replay_duration=426.4442ms
+ts=2026-05-12T07:13:43.378Z caller=main.go:1169 level=info fs_type=unknown
+ts=2026-05-12T07:13:43.378Z caller=main.go:1172 level=info msg="TSDB started"
+ts=2026-05-12T07:13:43.378Z caller=main.go:1354 level=info msg="Loading configuration file" filename=config/prometheus.yml
+ts=2026-05-12T07:13:43.417Z caller=main.go:1391 level=info msg="updated GOGC" old=100 new=75
+ts=2026-05-12T07:13:43.418Z caller=main.go:1402 level=info msg="Completed loading of configuration file" filename=config/prometheus.yml totalDuration=40.3746ms db_storage=0s remote_storage=0s web_handler=0s query_engine=0s scrape=38.3646ms scrape_sd=0s notify=0s notify_sd=0s rules=0s tracing=0s
+ts=2026-05-12T07:13:43.418Z caller=main.go:1133 level=info msg="Server is ready to receive web requests."
+ts=2026-05-12T07:13:43.418Z caller=manager.go:164 level=info component="rule manager" msg="Starting rule manager..."
+ts=2026-05-12T08:20:24.014Z caller=compact.go:576 level=info component=tsdb msg="write block" mint=1778562292318 maxt=1778565600000 ulid=01KRDMBG0ECH3AQBTC7TSB2MJT duration=7.4876903s ooo=false
+ts=2026-05-12T08:20:24.026Z caller=head.go:1355 level=info component=tsdb msg="Head GC completed" caller=truncateMemory duration=11.3108ms
+ts=2026-05-12T08:20:24.027Z caller=checkpoint.go:101 level=info component=tsdb msg="Creating checkpoint" from_segment=0 to_segment=1 mint=1778565600000
+ts=2026-05-12T08:20:24.604Z caller=head.go:1317 level=info component=tsdb msg="WAL checkpoint complete" first=0 last=1 duration=577.1332ms
