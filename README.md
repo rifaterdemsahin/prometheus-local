@@ -181,7 +181,8 @@ prometheus-local/
 │   ├── TEST-RESULTS.md                 # Verified test results on this machine
 │   ├── VERIFICATION-QUERIES.md         # All diagnostic queries used
 │   ├── TEST-LINKS.md                   # 400+ ready-to-use URLs and API links
-│   └── WINDOWS-METRICS-REPORT.md       # CPU/RAM/Disk/Net monitoring setup
+│   ├── WINDOWS-METRICS-REPORT.md       # CPU/RAM/Disk/Net monitoring setup
+│   └── HOW-I-DID-IT.md                 # Step-by-step explanation of the setup
 ├── scripts/
 │   ├── install-service.bat             # Install & start NSSM service
 │   ├── uninstall-service.bat           # Remove service
