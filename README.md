@@ -178,7 +178,9 @@ prometheus-local/
 │   ├── TROUBLESHOOTING.md              # NSSM crash investigation
 │   ├── ACCESS.md                       # URLs, APIs, and PromQL examples
 │   ├── METRICS-VERIFICATION.md         # How metrics collection works + how to query
-│   └── TEST-RESULTS.md                 # Verified test results on this machine
+│   ├── TEST-RESULTS.md                 # Verified test results on this machine
+│   ├── VERIFICATION-QUERIES.md         # All diagnostic queries used
+│   └── TEST-LINKS.md                   # 400+ ready-to-use URLs and API links
 ├── scripts/
 │   ├── install-service.bat             # Install & start NSSM service
 │   ├── uninstall-service.bat           # Remove service
@@ -219,7 +221,9 @@ You will see the Prometheus expression browser:
 
 **Step 1 — Type a query**
 
-Click the **Expression** box at the top and type:
+Click the **Expression** box at the top and type. As you type, Prometheus shows an **autocomplete dropdown** with all available metrics:
+
+![Prometheus Autocomplete](docs/images/prometheus-autocomplete.png)
 
 ```
 up
@@ -267,3 +271,4 @@ Invoke-WebRequest -Uri "http://localhost:9090/api/v1/label/__name__/values" -Use
 For the full API reference, see [`docs/ACCESS.md`](docs/ACCESS.md).
 For verified test results on this machine, see [`docs/TEST-RESULTS.md`](docs/TEST-RESULTS.md).
 For a deep dive into how metrics collection works, see [`docs/METRICS-VERIFICATION.md`](docs/METRICS-VERIFICATION.md).
+For **400+ ready-to-test URLs and direct links**, see [`docs/TEST-LINKS.md`](docs/TEST-LINKS.md) — copy-paste any URL into your browser.
